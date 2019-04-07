@@ -5,7 +5,7 @@ int gcd(int a, int b);
 int main(void)
 {
     int a[1000]={0}, n=0;
-    int i=1, j=1, temp=0, ans=0;
+    int i=1, j=1, ans=0;
     int x=0;
     int flag=1;
     scanf("%d\n", &n);
@@ -19,9 +19,8 @@ int main(void)
     {
         for(j=i+1;j<=5;j++)
         {
-            temp=ans;
             ans=gcd(a[i],a[j]);
-            if(ans>temp)
+            if(ans>x)
             {
                 x=ans;
             }
