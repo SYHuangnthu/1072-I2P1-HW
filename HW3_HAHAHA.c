@@ -10,14 +10,15 @@ int main(void)
     int flag=1;
     scanf("%d\n", &n);
 
-    for(flag=1;flag<=n;flag++)
+    while(flag<=n && n>=2)
     {
         scanf("%d", &i);
         a[flag] = i;
+        flag++;
     }
-    for(i=1; i<=5;i++)
+    for(i=1; i<=n;i++)
     {
-        for(j=i+1;j<=5;j++)
+        for(j=i+1;j<=n;j++)
         {
             ans=gcd(a[i],a[j]);
             if(ans>x)
