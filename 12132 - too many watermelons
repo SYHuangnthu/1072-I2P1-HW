@@ -1,0 +1,60 @@
+#include<stdio.h>
+int a[200005]={0},b[200005]={0},c[200005];//c[i]紀錄每個b[i]需要吃幾次
+int main()
+{
+    int n=0;//總共有幾個西瓜
+    int arun=0;//現在吃到第幾個西瓜了(現在a list跑到哪了)
+    int brun=0;//現在b list跑到哪了
+
+    int i=0,num=0;
+    while(scanf("%d",&n)==1)//( 1 <= n <= 2*10^5 )
+    {
+        arun=0;
+        brun=0;
+        for(i=0;i<n;i++)
+        {
+            scanf("%d",&a[i]);
+            c[i]=1;//c list的初值不可為0會跟後面衝突到
+        }
+        for(i=0;i<n;i++)
+        {
+            scanf("%d",&b[i]);
+        }
+    //----------------
+        while(brun!=n)
+        {
+         num=1;//重置num
+         if(c[brun]==0){brun++;}
+         else
+         {
+
+            while(a[arun]!=b[brun]&&arun!=n)//arun跑到n代表西瓜全吃完了
+            {                               //固定brun值
+                //----   //把吃掉的西瓜記下來，之後要吃他時就知道他已經被吃掉了
+
+                i=brun+1;//因為brun之前的數都處理完了所以從這裡開始偵測即可//重置i
+                while(b[i]!=a[arun])
+                { i++;}
+
+                c[i]=0;
+                //----
+                arun++;
+                num++;//吃到目標西瓜共要吃多少瓜
+            }
+            arun++;//把arun推前進一格
+            c[brun]=num;
+            brun++;
+          }
+        }
+    //----
+        for(i=0;i<n;i++)
+        {
+            if(i==0)printf("%d",c[i]);
+            else printf(" %d",c[i]);
+
+            c[i]=0;//把c list歸0
+        }
+        printf("\n");
+   }
+ return 0;
+}
