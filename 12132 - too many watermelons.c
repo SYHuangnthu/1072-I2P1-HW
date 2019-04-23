@@ -1,13 +1,12 @@
 #include<stdio.h>
+
 int a[200001]={0},b[200001]={0},temptemp[200001]={0},ans[200001]={0};
 
 int main(void)
 {
     int n,qq;
     int i,j,temp=1;
-
     scanf("%d", &n);
-
     for(i=1;i<=n;i++)
     {
         scanf("%d",&qq);
@@ -23,7 +22,7 @@ int main(void)
     for(j=1;j<=n;j++)
     {
         i = temp;
-        while(i<=5)
+        while(i<=n)
         {
             a[i]=temptemp[i];
             if(a[i]==b[j])
@@ -31,9 +30,9 @@ int main(void)
                 ans[j]++;
                 a[i]=0;
                 temp=i+1;
-                i=6;
+                i=n+1;
             }
-            else if(i==5)
+            else if(i==n)
             {
                 ans[j]=0;
                 i++;
@@ -43,9 +42,9 @@ int main(void)
                 a[i]=0;
                 i++;
             }
-
         }
     }
+
     j=1;
     while(j<n)
     {
