@@ -1,0 +1,34 @@
+//12130
+#include<stdio.h>
+
+//substring:字串裡面ㄉ字串
+//可以從前往後，也可以從後往前喔
+
+int main(void)
+{
+    int n,S[1000001];
+    int i,flag;
+    
+    while(scanf("%d", &n)!=EOF)
+    {
+        for(i=0;i<n;i++)
+        {
+            scanf("%c", &S[i]);
+        }
+        flag=0;
+        for(i=0;i<n-1;i++)
+        {
+            if(S[i]!=S[i+1])
+            {
+                flag=1;
+                break;
+            }
+            else;                
+        }
+        if(flag==1)printf("YES\n");
+        else printf("NO\n");
+    }
+    return 0;
+
+    
+}
