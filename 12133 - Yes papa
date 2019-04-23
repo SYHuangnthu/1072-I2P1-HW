@@ -1,36 +1,31 @@
-//12133 - Yes papa
 #include<stdio.h>
-#include<stdlib.h>
 #include<string.h>
+char a[100001],b[100001];
+
+int eq(int l, int r,int L, int R)
+{
+    if(strncmp(a+l,b+L,r-l+1)==0)
+        return 1;
+    else if((r-l+1)%2!=0)
+        return 0;
+    else
+    {
+        int mid=(l+r)/2,MID=(L+R)/2;
+        if(eq(l,mid,L,MID)&&eq(mid+1,r,MID+1,R))
+            return 1;
+        else if(eq(l,mid,MID+1,R)&&eq(mid+1,r,L,MID))
+            return 1;
+        else return 0;
+    }
+    return 0;
+}
+
 int main(void)
 {
-    char astr[100000],bstr[100000];
-
-    scanf("%s", astr);
-    scanf("%s", bstr);
-    int alen=strlen(astr);
-    int blen=strlen(bstr);
-    int check={0};
-
-    if(strcmp(astr,bstr)==1&&strlen(astr)%2==0)
-        printf("YES\n");
-    else if(alen%2==0&&blen==alen)
-    {
-        if(astr[1]==bstr[1]||astr[2]==bstr[1])
-        {
-            if(astr[1]==bstr[1] && astr[2]==bstr[2])
-                printf("YES\n");
-            else if(astr[1]==bstr[2] && astr[2]==bstr[1])
-                 printf("YES\n");
-            else;
-        }
-
-        else
-            printf("NO\n");
-
-    }
-
-
+    scanf("%s%s", a,b);
+    int len=strlen(a);
+    if (eq(0,len-1,0,len-1)) puts("YES");
+    else puts("NO");
     return 0;
 
 }
