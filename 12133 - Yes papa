@@ -1,0 +1,36 @@
+//12133 - Yes papa
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+int main(void)
+{
+    char astr[100000],bstr[100000];
+
+    scanf("%s", astr);
+    scanf("%s", bstr);
+    int alen=strlen(astr);
+    int blen=strlen(bstr);
+    int check={0};
+
+    if(strcmp(astr,bstr)==1&&strlen(astr)%2==0)
+        printf("YES\n");
+    else if(alen%2==0&&blen==alen)
+    {
+        if(astr[1]==bstr[1]||astr[2]==bstr[1])
+        {
+            if(astr[1]==bstr[1] && astr[2]==bstr[2])
+                printf("YES\n");
+            else if(astr[1]==bstr[2] && astr[2]==bstr[1])
+                 printf("YES\n");
+            else;
+        }
+
+        else
+            printf("NO\n");
+
+    }
+
+
+    return 0;
+
+}
